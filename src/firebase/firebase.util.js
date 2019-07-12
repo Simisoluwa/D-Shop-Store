@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import { resolve } from 'dns';
+import { reject } from 'q';
 
 const config = {
     apiKey: "AIzaSyCmIKwyHnwSxbCcR8rJIT_ZOU0kyHK6QKc",
@@ -70,13 +72,22 @@ const config = {
       return accumulator;
     },{});
 
+  };
+
+  export const getCurrentUser = () => {
+    return new Promise((resolve,reject) => {
+      const unsubscribe = auth.onAuthStateChanged(userAuth => {
+        unsubscribe();
+        resolve(userAuth);
+      }, reject)
+    })
   }
 
   export const auth = firebase.auth();
   export const firestore = firebase.firestore();
 
-  const provider = new firebase.auth.GoogleAuthProvider();
-  provider.setCustomParameters({ prompt: 'select_account' });
-  export const signInWithGoogle = () => auth.signInWithPopup(provider);
+  export const googleProvider = new firebase.auth.GoogleAuthProvider();
+  googleProvider.setCustomParameters({ prompt: 'select_account' });
+  export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
   export default firebase;
