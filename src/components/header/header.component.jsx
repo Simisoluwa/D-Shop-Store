@@ -4,6 +4,7 @@ import { ReactComponent as Logo} from '../../assets/crown.svg';
 import { connect } from 'react-redux';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import LikesIcon from '../likes-icon/likes-icon.component';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser }  from '../../redux/user/user.selectors';
 import { signOutStart} from '../../redux/user/user.actions';
