@@ -24,16 +24,16 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
         setCredentials({ ...userCredentials,[name]: value })
     }
         return(
-            <div class="sign-in">
-                <h2>I already have an account</h2>
-                <span>Sign in with your email and password</span>
+            <div className="sign-in">
+                <h2 className="title">I already have an account</h2>
+                <span className="title">Sign in with your email and password</span>
 
                 <form onSubmit={handleSubmit}>
                     <FormInput 
                         name="email" 
                         type="email" 
                         value={email} 
-                        handleChange={this.handleChange}
+                        handleChange={handleChange}
                         label="Email"
                         required
                     />
